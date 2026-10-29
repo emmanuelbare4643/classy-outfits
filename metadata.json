@@ -1,0 +1,8 @@
+{
+  "name": "Remix Classy Outfits | Clothewear \u0026 Shoegame",
+  "description": "High-fashion women\u0027s streetwear and footwear boutique featuring curated shoes, jerseys, jackets, clogs, and slides. Direct M-Pesa payments to +254 791389827 with real delivery proofs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

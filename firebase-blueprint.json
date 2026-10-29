@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A product listed in the Classy Outfits store catalogue",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique product ID" },
+        "name": { "type": "string", "description": "Product display name" },
+        "category": { "type": "string", "description": "Product category" },
+        "price": { "type": "number", "description": "Price in KES" },
+        "originalPrice": { "type": "number", "description": "Original price before discount" },
+        "images": { "type": "array", "description": "Product image URLs or base64 data" },
+        "description": { "type": "string", "description": "Detailed description of the product" },
+        "sizes": { "type": "array", "description": "Available clothing or shoe sizes" },
+        "colors": { "type": "array", "description": "Available colors" },
+        "inStock": { "type": "boolean", "description": "Stock availability flag" },
+        "isFeatured": { "type": "boolean", "description": "Whether to highlight on homepage" },
+        "isNew": { "type": "boolean", "description": "New arrival tag" },
+        "isOwnerUpload": { "type": "boolean", "description": "Uploaded by store owner Emmanuel" },
+        "uploadedAt": { "type": "string", "description": "ISO timestamp of upload" },
+        "directOrderPhone": { "type": "string", "description": "M-Pesa direct ordering phone" },
+        "discountPercent": { "type": "number", "description": "Calculated discount percentage" }
+      },
+      "required": ["id", "name", "category", "price", "images", "description", "inStock"]
+    },
+    "DeliveryProof": {
+      "title": "DeliveryProof",
+      "description": "Proof of delivery photo and details sent to a customer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Delivery record ID" },
+        "customerName": { "type": "string", "description": "Customer name or initials" },
+        "location": { "type": "string", "description": "Town or region in Kenya" },
+        "date": { "type": "string", "description": "Delivery date string" },
+        "item": { "type": "string", "description": "Delivered item description" },
+        "photo": { "type": "string", "description": "Photo of parcel or delivery receipt" },
+        "verified": { "type": "boolean", "description": "Verification status" },
+        "trackingCode": { "type": "string", "description": "Courier parcel tracking code" },
+        "courier": { "type": "string", "description": "Courier service used" },
+        "feedback": { "type": "string", "description": "Customer feedback statement" },
+        "isOwnerUpload": { "type": "boolean", "description": "Uploaded by store owner" }
+      },
+      "required": ["id", "customerName", "location", "item", "photo"]
+    },
+    "CustomerReview": {
+      "title": "CustomerReview",
+      "description": "Customer review, star rating, and feedback comment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique review ID" },
+        "customerName": { "type": "string", "description": "Reviewer name" },
+        "rating": { "type": "number", "description": "Rating score 1 to 5" },
+        "comment": { "type": "string", "description": "Review feedback comment" },
+        "date": { "type": "string", "description": "Date of review submission" },
+        "verifiedPurchase": { "type": "boolean", "description": "Whether verified customer purchase" },
+        "productName": { "type": "string", "description": "Purchased item name" },
+        "photos": { "type": "array", "description": "Customer photo attachments" },
+        "location": { "type": "string", "description": "Reviewer county or city" }
+      },
+      "required": ["id", "customerName", "rating", "comment", "date"]
+    },
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Store configuration and global settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Settings doc ID" },
+        "businessInfo": { "type": "object", "description": "Business contact and payment numbers" },
+        "onlyShowOwnerUploads": { "type": "boolean", "description": "Toggle to filter only owner uploads" },
+        "updatedAt": { "type": "string", "description": "Last update timestamp" }
+      },
+      "required": ["id"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Store products catalogue synced real-time across all devices"
+    },
+    "/deliveries/{deliveryId}": {
+      "schema": "DeliveryProof",
+      "description": "Proof of delivery gallery synced real-time across all devices"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "CustomerReview",
+      "description": "Customer feedback and reviews synced real-time across all devices"
+    },
+    "/settings/{settingId}": {
+      "schema": "StoreSettings",
+      "description": "Storewide settings and business info"
+    }
+  }
+}

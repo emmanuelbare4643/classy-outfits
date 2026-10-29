@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, .font-heading {
+    font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-mono-numbers {
+    font-family: 'Space Grotesk', monospace;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2430;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3366;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(17, 19, 26, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(24, 27, 38, 0.85);
+  border-color: rgba(255, 51, 102, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(255, 51, 102, 0.2);
+}
+
+/* Vibrant glow accents */
+.neon-glow-coral {
+  box-shadow: 0 0 25px -5px rgba(255, 51, 102, 0.45);
+}
+
+.neon-glow-violet {
+  box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.45);
+}
+
+.neon-glow-gold {
+  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.45);
+}
